@@ -2,17 +2,81 @@
 	<head>
 		<script src="js/mail-generator.js"></script>
 		<link href="css/style.css" rel="stylesheet" media="screen">
+		 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js">
+  <script>
     <script>
-      window.onload = function(){
-        // ALL OF YOUR JAVASCRIPT CODE SHOULD GO HERE. 
-        // We have to use window.onload so your JavaScript doesn't execute until the page has loaded and all HTML has been downloaded to your browser
-        
-      };
+window.onload = function() {
+ 
+ //function to generate new message "mail" with all properties
+ function newMail(mail) {
+ 	
+ 	//load to window "inbox"
+ 	var inbox = document.getElementById("main");
+ 	
+ 	//generate dates to <div> with id "date div"
+ 	var newDate = document.createElement('datediv');
+ 	newDate.innerHTML = mail.date.toLocaleString() + "<br />";
+ 	inbox.appendChild(newDate);
+ 	//shorten dates
+
+
+ 	//generate subject
+ 	var newSubject = document.createElement('subjectdiv');
+ 	newSubject.innerHTML = mail.subject + "<br />";
+ 	inbox.appendChild(newSubject);
+
+ 	//generate sender
+ 	var newSender = document.createElement('senderdiv');
+ 	newSender.innerHTML = "from" + mail.sender + "<br />";
+ 	inbox.appendChild(newSender);
+
+ 	//generate message body
+ 	var message = document.createElement('messagediv');
+ 	message.innerHTML = mail.body + "<br />" ;
+ 	inbox.appendChild(message);
+
+ 	//click to open full message
+var openMail = document.create
+
+ }
+
+//for loop, runs newMail until window.geemails array is complete, 
+for (var i = 0; i < window.geemails.length; i++) {
+	newMail(window.geemails[i]);
+};
+ 
+ 
+ 
+ //display inbox count, total in window.geemails array
+ function inboxNum(count){
+ 		//div to display inbox count on page
+ 	var inboxCount = document.createElement("inboxdiv");
+ 	inboxCount.innerHTML = count.window.geemails.length + " Gee-Mails" ;
+ 	return window.geemails.length; 
+ };
+
+
+ 
+ 
+}
+
     </script>
+    <title> Gee-Mail Inbox </title>
 	</head>
+	
 	<body>
-		<div class="container" id="main">
-			Build Me!
+		<h1> Gee-Mail Inbox</h1>
+		<div class ="container" id="main">
+		
+		
+		
+
+
+
+		<div id ="inboxCount">  </div>
+			
+		
 		</div>
 	</body>
 </html>

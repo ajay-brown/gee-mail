@@ -1,0 +1,46 @@
+
+body {
+	background-color: white;
+	font-family: "Helvetica", sans serif ; 
+}
+h1 { margin: auto;
+		align: center;
+		border: 5px solid black;
+		padding: 3px;
+	}
+#main {
+	border: 3px solid black;
+	display: flex;
+
+}
+
+#inboxdiv {
+	border: 3px solid black;
+	float:right;
+}
+
+#datediv {
+	order: 1;
+	border 1px solid black;
+	align-self: auto;
+}
+
+#subjectdiv {
+	order: 2;
+	border: 1px solid black;
+	align-self: auto;
+}
+
+#senderdiv {
+	order: 3;
+	border: 1px solid black;
+	align-self: auto;
+}
+
+#messagediv {
+	order: 4;
+border: 1 px solid black;
+align-self: auto;
+}
+
+
