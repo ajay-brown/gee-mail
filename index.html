@@ -2,9 +2,7 @@
 	<head>
 		<script src="js/mail-generator.js"></script>
 		<link href="css/style.css" rel="stylesheet" media="screen">
-		 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js">
-  <script>
+
     <script>
 window.onload = function() {
  
@@ -33,11 +31,11 @@ window.onload = function() {
 
  	//generate message body
  	var message = document.createElement('messagediv');
- 	message.innerHTML = mail.body + "<br />" ;
- 	inbox.appendChild(message);
+ 	message.innerHTML += mail.body + "<br />" ;
+ 	inbox.appendChild(message) + "<br />";
 
  	//click to open full message
-var openMail = document.create
+
 
  }
 
@@ -47,19 +45,21 @@ for (var i = 0; i < window.geemails.length; i++) {
 };
  
  
- 
- //display inbox count, total in window.geemails array
- function inboxNum(count){
- 		//div to display inbox count on page
- 	var inboxCount = document.createElement("inboxdiv");
- 	inboxCount.innerHTML = count.window.geemails.length + " Gee-Mails" ;
- 	return window.geemails.length; 
+
+ 	
+ 	 //display inbox count, total in window.geemails array
+ 	function inboxCount(){
+ 		return window.geemails.length
+ 		}
+ 		var inboxNum = document.createElement("countdiv");
+ 		inboxNum.innerHTML = inboxCount() + "geemails";
+
  };
 
 
  
  
-}
+
 
     </script>
     <title> Gee-Mail Inbox </title>
@@ -68,15 +68,10 @@ for (var i = 0; i < window.geemails.length; i++) {
 	<body>
 		<h1> Gee-Mail Inbox</h1>
 		<div class ="container" id="main">
+	
 		
-		
-		
+	
 
-
-
-		<div id ="inboxCount">  </div>
-			
-		
 		</div>
 	</body>
 </html>
