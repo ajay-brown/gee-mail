@@ -14,34 +14,34 @@ h1 { margin: auto;
 
 }
 
-#inboxdiv {
+.inbox {
 	border: 3px solid black;
 	float:right;
+	padding: 20px;
 }
 
-#datediv {
-	order: 1;
-	border 1px solid black;
-	align-self: auto;
-}
 
-#subjectdiv {
+.newDate {
 	order: 2;
 	border: 1px solid black;
 	align-self: auto;
+	padding: 20px;
 }
 
-#senderdiv {
+.newSender {
 	order: 3;
 	border: 1px solid black;
 	align-self: auto;
+	padding: 20px;
 }
 
-#messagediv {
+.message {
 	order: 4;
 border: 1 px solid black;
 align-self: auto;
+padding: 20px;
+
 }
-<br>
+
 
 

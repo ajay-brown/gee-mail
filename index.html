@@ -13,36 +13,36 @@ window.onload = function() {
  	var inbox = document.getElementById("main");
  	
  	//generate dates to <div> with id "date div"
- 	var newDate = document.createElement('datediv');
+ 	var newDate = document.createElement('div');
  	newDate.innerHTML = mail.date.toLocaleString() + "<br />";
  	inbox.appendChild(newDate);
  	//shorten dates
 
 
  	//generate subject
- 	var newSubject = document.createElement('subjectdiv');
+ 	var newSubject = document.createElement('div');
  	newSubject.innerHTML = mail.subject + "<br />";
  	inbox.appendChild(newSubject);
 
  	//generate sender
- 	var newSender = document.createElement('senderdiv');
+ 	var newSender = document.createElement('div');
  	newSender.innerHTML = "from" + mail.sender + "<br />";
  	inbox.appendChild(newSender);
 
  	//generate message body
- 	var message = document.createElement('messagediv');
+ 	var message = document.createElement('div');
  	message.innerHTML += mail.body + "<br />" ;
  	inbox.appendChild(message) + "<br />";
-
- 	//click to open full message
 
 
  }
 
 //for loop, runs newMail until window.geemails array is complete, 
 for (var i = 0; i < window.geemails.length; i++) {
-	newMail(window.geemails[i]);
+	newMail(window.geemails[i])
+	window.geemails[i].innerHTML += inbox.appendChild() + '<br />';	
 };
+
  
  
 
@@ -51,11 +51,17 @@ for (var i = 0; i < window.geemails.length; i++) {
  	function inboxCount(){
  		return window.geemails.length
  		}
- 		var inboxNum = document.createElement("countdiv");
+ 		var inboxNum = document.createElement("div");
  		inboxNum.innerHTML = inboxCount() + "geemails";
 
  };
-
+ ///calling getNewMessage 
+function addNewMessage(){
+	var newMessage = getNewMessage
+	displayMessage(newMessage);
+};
+//interval for message
+setInterval(addNewMessage(), 6000);
 
  
  
@@ -68,6 +74,7 @@ for (var i = 0; i < window.geemails.length; i++) {
 	<body>
 		<h1> Gee-Mail Inbox</h1>
 		<div class ="container" id="main">
+		<span class="read more"> </span>
 	
 		
 	
