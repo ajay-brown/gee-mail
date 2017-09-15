@@ -2,9 +2,22 @@
 	<head>
 		<script src="js/mail-generator.js"></script>
 		<link href="css/style.css" rel="stylesheet" media="screen">
+		 <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
 
     <script>
 window.onload = function() {
+//box for mail Count
+	var box = document.getElementById('main');
+
+var mailCount = document.createElement('div');
+mailCount.innerHTML = mailCounter() + "geemails";
+box.appendChild(mailCount);
+
+//display total geemails
+function mailCounter(){
+	return window.geemails.length; 
+}
+
  
  //function to generate new message "mail" with all properties
  function newMail(mail) {
@@ -14,54 +27,57 @@ window.onload = function() {
  	
  	//generate dates to <div> with id "date div"
  	var newDate = document.createElement('div');
- 	newDate.innerHTML = mail.date.toLocaleString() + "<br />";
+ 	newDate.innerHTML = mail.date.toLocaleString();
  	inbox.appendChild(newDate);
  	//shorten dates
 
 
  	//generate subject
  	var newSubject = document.createElement('div');
- 	newSubject.innerHTML = mail.subject + "<br />";
+ 	newSubject.innerHTML = mail.subject;
  	inbox.appendChild(newSubject);
 
  	//generate sender
  	var newSender = document.createElement('div');
- 	newSender.innerHTML = "from" + mail.sender + "<br />";
+ 	newSender.innerHTML = "from" + mail.sender;
  	inbox.appendChild(newSender);
 
  	//generate message body
- 	var message = document.createElement('div');
- 	message.innerHTML += mail.body + "<br />" ;
- 	inbox.appendChild(message) + "<br />";
+ 	var message = document.createElement('messagediv');
+ 	message.innerHTML += mail.body;
+ 	inbox.appendChild(message);
 
+ 	//new row for messages
+ 	var newRow = document.createElement('div');
+ 	newRow.innerHTML += "<br />";
+ 	inbox.appendChild(newRow);
 
- }
-
-//for loop, runs newMail until window.geemails array is complete, 
+};
+ 		//for loop, runs newMail until window.geemails array is complete, 
 for (var i = 0; i < window.geemails.length; i++) {
-	newMail(window.geemails[i])
-	window.geemails[i].innerHTML += inbox.appendChild() + '<br />';	
+	newMail(window.geemails[i]);
+
 };
 
- 
- 
+  ///calling getNewMessage 
+function getMail(){
+	var getNewMail = getNewMessage ();
+	newMail(getNewMail);
+	};
 
- 	
- 	 //display inbox count, total in window.geemails array
- 	function inboxCount(){
- 		return window.geemails.length
- 		}
- 		var inboxNum = document.createElement("div");
- 		inboxNum.innerHTML = inboxCount() + "geemails";
-
- };
- ///calling getNewMessage 
-function addNewMessage(){
-	var newMessage = getNewMessage
-	displayMessage(newMessage);
-};
 //interval for message
-setInterval(addNewMessage(), 6000);
+var interval = setInterval(getMail(), 6000);
+
+$('#main').click(function() {
+	$('messagediv').slideToggle( "fast" );
+});
+
+
+};
+ 
+ 
+
+
 
  
  

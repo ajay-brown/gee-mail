@@ -43,5 +43,9 @@ padding: 20px;
 
 }
 
+.messagetoggle span {
+	display: none;
+}
+
 
 
