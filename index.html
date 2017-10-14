@@ -1,7 +1,7 @@
 <html>
 	<head>
 		<script src="js/mail-generator.js"></script>
-		<link href="css/style.css" rel="stylesheet" media="screen">
+		<link href="style.css" rel="stylesheet" media="screen">
 		 <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
 
     <script>
@@ -10,7 +10,7 @@ window.onload = function() {
 	var box = document.getElementById('main');
 
 var mailCount = document.createElement('div');
-mailCount.innerHTML = mailCounter() + "geemails";
+mailCount.innerHTML = mailCounter() + " geemails";
 box.appendChild(mailCount);
 
 //display total geemails
@@ -24,6 +24,11 @@ function mailCounter(){
  	
  	//load to window "inbox"
  	var inbox = document.getElementById("main");
+
+ 	//boxing each message
+ 	var box = document.createElement('div');
+ 	box.id = 'box';
+ 	inbox.appendChild(box);
  	
  	//generate dates to <div> with id "date div"
  	var newDate = document.createElement('div');
@@ -39,11 +44,12 @@ function mailCounter(){
 
  	//generate sender
  	var newSender = document.createElement('div');
- 	newSender.innerHTML = "from" + mail.sender;
+ 	newSender.innerHTML = "from " + mail.sender;
  	inbox.appendChild(newSender);
 
  	//generate message body
- 	var message = document.createElement('messagediv');
+ 	var message = document.createElement('div');
+ 	message.id = "message";
  	message.innerHTML += mail.body;
  	inbox.appendChild(message);
 
@@ -53,24 +59,27 @@ function mailCounter(){
  	inbox.appendChild(newRow);
 
 };
+
+
+  //calling getNewMessage 
+  function newMessage (){
+		var getMail = getNewMessage();
+		newMail(getMail);
+};
+setInterval(newMessage(),1000);
+
+
+$('#main').click(function() {
+	$('#message').slideToggle( "fast", function(){} );
+});
+
  		//for loop, runs newMail until window.geemails array is complete, 
 for (var i = 0; i < window.geemails.length; i++) {
 	newMail(window.geemails[i]);
 
 };
 
-  ///calling getNewMessage 
-function getMail(){
-	var getNewMail = getNewMessage ();
-	newMail(getNewMail);
-	};
 
-//interval for message
-var interval = setInterval(getMail(), 6000);
-
-$('#main').click(function() {
-	$('messagediv').slideToggle( "fast" );
-});
 
 
 };
