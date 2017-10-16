@@ -1,22 +1,25 @@
 <html>
 	<head>
 		<script src="js/mail-generator.js"></script>
-		<link href="style.css" rel="stylesheet" media="screen">
+		<link href="css/style.css" rel="stylesheet" media="screen">
 		 <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
 
     <script>
 window.onload = function() {
 //box for mail Count
-	var box = document.getElementById('main');
+	var mailbox = document.getElementById('main');
 
 var mailCount = document.createElement('div');
 mailCount.innerHTML = mailCounter() + " geemails";
-box.appendChild(mailCount);
+mailbox.appendChild(mailCount);
 
 //display total geemails
 function mailCounter(){
 	return window.geemails.length; 
 }
+//counter in tab WIP
+var counter = document.getElementsByTagName('title')[0];
+ counter.innerHTML =  "Gee-Mail Inbox " + "(" + mailCounter() + ")";
 
  
  //function to generate new message "mail" with all properties
@@ -58,20 +61,29 @@ function mailCounter(){
  	newRow.innerHTML += "<br />";
  	inbox.appendChild(newRow);
 
-};
+
+
+
 
 
   //calling getNewMessage 
-  function newMessage (){
+  function newMessage(){
+ 	//new var called getMail will call func getNew Message
 		var getMail = getNewMessage();
-		newMail(getMail);
-};
+		//run var getMail in newMail as above, new message will have all attributes as above
+	newMail(getMail);
+
+	//add new message to geemails array
+	window.geemails.push(getMail);
+	//update mailCounter
+	mailCount++;
+	
+console.log(getMail);
 setInterval(newMessage(),1000);
+						};
+};
 
 
-$('#main').click(function() {
-	$('#message').slideToggle( "fast", function(){} );
-});
 
  		//for loop, runs newMail until window.geemails array is complete, 
 for (var i = 0; i < window.geemails.length; i++) {
@@ -79,6 +91,13 @@ for (var i = 0; i < window.geemails.length; i++) {
 
 };
 
+//jquery for opening messages on click
+$('#main').click(function() {
+	$(this).children('#message').slideToggle('fast',function(){} );
+	//opens all messages
+	// $('#message').slideToggle( "fast", function(){} ); //opens top message
+
+});
 
 
 
@@ -93,7 +112,7 @@ for (var i = 0; i < window.geemails.length; i++) {
 
 
     </script>
-    <title> Gee-Mail Inbox </title>
+    <title> </title>
 	</head>
 	
 	<body>
