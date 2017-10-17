@@ -2,7 +2,7 @@
 	<head>
 		<script src="js/mail-generator.js"></script>
 		<link href="css/style.css" rel="stylesheet" media="screen">
-		 <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+		
 
     <script>
 window.onload = function() {
@@ -22,11 +22,56 @@ var counter = document.getElementsByTagName('title')[0];
  counter.innerHTML =  "Gee-Mail Inbox " + "(" + mailCounter() + ")";
 
  
- //function to generate new message "mail" with all properties
+ //function to generate new message "mail" with all properties, original 10
  function newMail(mail) {
  	
  	//load to window "inbox"
  	var inbox = document.getElementById("main");
+
+ 	//boxing each message
+ 	var box = document.createElement('div');
+ 	box.id = 'box';
+ 	inbox.appendChild(box);
+ 	
+ 	//generate dates to <div> with id "date div"
+ 	var newDate = document.createElement('div');
+ 	newDate.innerHTML = mail.date.toLocaleString();
+ 	inbox.appendChild(newDate);
+ 	//shorten dates
+
+ 	//generate subject
+ 	var newSubject = document.createElement('div');
+ 	newSubject.innerHTML = mail.subject;
+ 	inbox.appendChild(newSubject);
+
+ 	//generate sender
+ 	var newSender = document.createElement('div');
+ 	newSender.innerHTML = "from " + mail.sender;
+ 	inbox.appendChild(newSender);
+
+ 	//generate message body
+ 	var message = document.createElement('div');
+ 	message.id = "message";
+ 	message.innerHTML += mail.body;
+ 	inbox.appendChild(message);
+
+ 	//new row for messages
+ 	var newRow = document.createElement('div');
+ 	newRow.innerHTML += "<br />";
+ 	inbox.appendChild(newRow);
+ 	};
+
+for (var i = 0; i < window.geemails.length; i++) {
+	newMail(window.geemails[i]);
+
+};
+
+
+  //calling getNewMessage 
+  function newMessage(mail){
+ 	//new var called getMail will call func getNew Message
+		var getMail = getNewMessage();
+		 var inbox = document.getElementById("main");
 
  	//boxing each message
  	var box = document.createElement('div');
@@ -61,43 +106,35 @@ var counter = document.getElementsByTagName('title')[0];
  	newRow.innerHTML += "<br />";
  	inbox.appendChild(newRow);
 
+for (var i = 0; i < window.geemails.length; i++) {
+	newMessage(window.geemails[i]);
 
-
-
-
-
-  //calling getNewMessage 
-  function newMessage(){
- 	//new var called getMail will call func getNew Message
-		var getMail = getNewMessage();
-		//run var getMail in newMail as above, new message will have all attributes as above
-	newMail(getMail);
-
-	//add new message to geemails array
-	window.geemails.push(getMail);
-	//update mailCounter
-	mailCount++;
 	
-console.log(getMail);
-setInterval(newMessage(),1000);
-						};
 };
+ 	
+setInterval(newMessage(),1000);
+						
 
+//for toggling messages, line should retrieve box content, on click execute toggleMessage 
+// document.getElementById('box').onclick = function() {toggleMessage()};
 
+//function toggleMessage(){
+	//document.getElementById("message").toggle("show");
+
+	//var messageID = document.getElementById("#message");
+	//if (messageID.style.display === "none") {
+	//	messageID.style.display = "block";
+	//} else {
+	//	messageID.style.display = 'none' ;
+	//		}
+//}
 
  		//for loop, runs newMail until window.geemails array is complete, 
-for (var i = 0; i < window.geemails.length; i++) {
-	newMail(window.geemails[i]);
 
-};
 
-//jquery for opening messages on click
-$('#main').click(function() {
-	$(this).children('#message').slideToggle('fast',function(){} );
-	//opens all messages
-	// $('#message').slideToggle( "fast", function(){} ); //opens top message
 
-});
+
+
 
 
 
@@ -118,9 +155,7 @@ $('#main').click(function() {
 	<body>
 		<h1> Gee-Mail Inbox</h1>
 		<div class ="container" id="main">
-		<span class="read more"> </span>
-	
-		
+
 	
 
 		</div>
