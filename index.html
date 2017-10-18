@@ -36,100 +36,99 @@ var counter = document.getElementsByTagName('title')[0];
  	//generate dates to <div> with id "date div"
  	var newDate = document.createElement('div');
  	newDate.innerHTML = mail.date.toLocaleString();
- 	inbox.appendChild(newDate);
+ 	box.appendChild(newDate);
  	//shorten dates
 
  	//generate subject
  	var newSubject = document.createElement('div');
  	newSubject.innerHTML = mail.subject;
- 	inbox.appendChild(newSubject);
+ 	box.appendChild(newSubject);
 
  	//generate sender
  	var newSender = document.createElement('div');
  	newSender.innerHTML = "from " + mail.sender;
- 	inbox.appendChild(newSender);
+ 	box.appendChild(newSender);
 
  	//generate message body
  	var message = document.createElement('div');
  	message.id = "message";
  	message.innerHTML += mail.body;
- 	inbox.appendChild(message);
+ 	box.appendChild(message);
 
  	//new row for messages
  	var newRow = document.createElement('div');
  	newRow.innerHTML += "<br />";
  	inbox.appendChild(newRow);
- 	};
+ 	
 
-for (var i = 0; i < window.geemails.length; i++) {
-	newMail(window.geemails[i]);
 
 };
+for (var i = 0; i < 10; i++) {
+	newMail(window.geemails[i]); 
+	};
 
 
-  //calling getNewMessage 
-  function newMessage(mail){
+
+  //calling getNewMessage via function newMessage
+  function newMessage(){
  	//new var called getMail will call func getNew Message
 		var getMail = getNewMessage();
 		 var inbox = document.getElementById("main");
-
+console.log(getMail)
  	//boxing each message
  	var box = document.createElement('div');
  	box.id = 'box';
  	inbox.appendChild(box);
- 	
+ 
  	//generate dates to <div> with id "date div"
  	var newDate = document.createElement('div');
- 	newDate.innerHTML = mail.date.toLocaleString();
- 	inbox.appendChild(newDate);
+ 	newDate.innerHTML = getMail.date.toLocaleString();
+ 	box.appendChild(newDate);
  	//shorten dates
-
+	console.log("hi");
 
  	//generate subject
  	var newSubject = document.createElement('div');
- 	newSubject.innerHTML = mail.subject;
- 	inbox.appendChild(newSubject);
+ 	newSubject.innerHTML = getMail.subject;
+ 	box.appendChild(newSubject);
 
  	//generate sender
  	var newSender = document.createElement('div');
- 	newSender.innerHTML = "from " + mail.sender;
- 	inbox.appendChild(newSender);
+ 	newSender.innerHTML = "from " + getMail.sender;
+ 	box.appendChild(newSender);
 
  	//generate message body
  	var message = document.createElement('div');
  	message.id = "message";
- 	message.innerHTML += mail.body;
- 	inbox.appendChild(message);
+ 	message.innerHTML += getMail.body;
+ 	box.appendChild(message);
 
  	//new row for messages
  	var newRow = document.createElement('div');
  	newRow.innerHTML += "<br />";
- 	inbox.appendChild(newRow);
+ 	box.appendChild(newRow);
 
-for (var i = 0; i < window.geemails.length; i++) {
-	newMessage(window.geemails[i]);
-
+window.geemails.push(getMail)
 	
 };
  	
-setInterval(newMessage(),1000);
+setInterval(newMessage,5000);
 						
 
 //for toggling messages, line should retrieve box content, on click execute toggleMessage 
-// document.getElementById('box').onclick = function() {toggleMessage()};
 
-//function toggleMessage(){
-	//document.getElementById("message").toggle("show");
+ document.getElementById('box').onclick = function() {toggleMessage()};
+function toggleMessage(){
+	document.getElementById("message").toggle("show");
 
-	//var messageID = document.getElementById("#message");
-	//if (messageID.style.display === "none") {
-	//	messageID.style.display = "block";
-	//} else {
-	//	messageID.style.display = 'none' ;
-	//		}
-//}
+	var messageID = document.getElementById("message");
+	if (messageID.style.display === "none") {
+		messageID.style.display = "block";
+	} else {
+		messageID.style.display = 'none' ;
+		}
+}
 
- 		//for loop, runs newMail until window.geemails array is complete, 
 
 
 
