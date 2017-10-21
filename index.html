@@ -31,6 +31,7 @@ var counter = document.getElementsByTagName('title')[0];
  	//boxing each message
  	var box = document.createElement('div');
  	box.id = 'box';
+ 	box.className = "container";
  	inbox.appendChild(box);
  	
  	//generate dates to <div> with id "date div"
@@ -52,6 +53,7 @@ var counter = document.getElementsByTagName('title')[0];
  	//generate message body
  	var message = document.createElement('div');
  	message.id = "message";
+ 	message.className = "content";
  	message.innerHTML += mail.body;
  	box.appendChild(message);
 
@@ -78,6 +80,7 @@ console.log(getMail)
  	//boxing each message
  	var box = document.createElement('div');
  	box.id = 'box';
+ 	box.className = "container";
  	inbox.appendChild(box);
  
  	//generate dates to <div> with id "date div"
@@ -85,7 +88,6 @@ console.log(getMail)
  	newDate.innerHTML = getMail.date.toLocaleString();
  	box.appendChild(newDate);
  	//shorten dates
-	console.log("hi");
 
  	//generate subject
  	var newSubject = document.createElement('div');
@@ -100,6 +102,7 @@ console.log(getMail)
  	//generate message body
  	var message = document.createElement('div');
  	message.id = "message";
+ 	message.className = "content";
  	message.innerHTML += getMail.body;
  	box.appendChild(message);
 
@@ -109,24 +112,37 @@ console.log(getMail)
  	box.appendChild(newRow);
 
 window.geemails.push(getMail)
+
+
 	
 };
- 	
-setInterval(newMessage,5000);
-						
+ 	var int = setInterval(newMessage, 5000);
+//var int = setInterval("newMessage()" {start(); }, 1000);
+//var intCount = 1;
+//function start() {
+//	if (intCount === 10) {
+//		clearInterval (int);
+//	} else {
+//		intCount++
+//	}
+//}
+				
 
-//for toggling messages, line should retrieve box content, on click execute toggleMessage 
+//for toggling messages
+var messageToggle = document.getElementsByClassName("content");
+var messageBox = document.getElementsByClassName('container');
+//event listener for on click, boxed messages 
+for (var i=0; i<messageBox.length;i++){
+	messageBox[i].addEventListener("click",toggleMessage);
+}
 
- document.getElementById('box').onclick = function() {toggleMessage()};
 function toggleMessage(){
-	document.getElementById("message").toggle("show");
-
-	var messageID = document.getElementById("message");
-	if (messageID.style.display === "none") {
-		messageID.style.display = "block";
+	var dis = this.querySelectorAll(".content")[0];
+	if(dis.style.display === "none"){
+		dis.style.display = "block";
 	} else {
-		messageID.style.display = 'none' ;
-		}
+		dis.style.display = "none";
+	}
 }
 
 
