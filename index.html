@@ -1,7 +1,7 @@
 <html>
 	<head>
 		<script src="js/mail-generator.js"></script>
-		<link href="css/style.css" rel="stylesheet" media="screen">
+		<link href="style.css" rel="stylesheet" media="screen">
 		
 
     <script>
@@ -9,24 +9,35 @@ window.onload = function() {
 //box for mail Count
 	var mailbox = document.getElementById('main');
 
-var mailCount = document.createElement('div');
-mailCount.innerHTML = mailCounter() + " geemails";
-mailbox.appendChild(mailCount);
+	
+//keeping count, in a jenky way 
 
-//display total geemails
-function mailCounter(){
-	return window.geemails.length; 
-}
-//counter in tab WIP
-var counter = document.getElementsByTagName('title')[0];
- counter.innerHTML =  "Gee-Mail Inbox " + "(" + mailCounter() + ")";
+var starter = 10;
+numbers.innerHTML = starter + ' geemails';
+function keepCountBox() {
+	starter++
+	console.log(starter)
+	 var mailCount = document.getElementById('numbers');
+mailCount.innerHTML = starter + " geemails";
 
- 
+ 	//counter in tab 
+var tabCount = document.getElementsByTagName('title')[0];
+ tabCount.innerHTML =  "Gee-Mail Inbox " + "(" + starter + ")";
+ };
+var counterBox = setInterval(keepCountBox, 5000);
+
+
+
+
+
+
+
  //function to generate new message "mail" with all properties, original 10
  function newMail(mail) {
  	
  	//load to window "inbox"
  	var inbox = document.getElementById("main");
+
 
  	//boxing each message
  	var box = document.createElement('div');
@@ -61,13 +72,37 @@ var counter = document.getElementsByTagName('title')[0];
  	var newRow = document.createElement('div');
  	newRow.innerHTML += "<br />";
  	inbox.appendChild(newRow);
- 	
+
 
 
 };
+
+
 for (var i = 0; i < 10; i++) {
 	newMail(window.geemails[i]); 
+
 	};
+
+	 		//for toggling messages
+var messageBox = document.getElementsByClassName('container');
+
+//event listener for on click, boxed messages 
+for (var i=0; i<messageBox.length;i++){
+	messageBox[i].addEventListener("click",toggleMessage);
+}
+
+function toggleMessage(){
+	var dis = this.querySelectorAll(".content")[0];
+	if(dis.style.display === "none"){
+		dis.style.display = "block";
+	} else {
+		dis.style.display = "none";
+	}
+}
+
+ console.log("hi")	
+
+
 
 
 
@@ -75,12 +110,14 @@ for (var i = 0; i < 10; i++) {
   function newMessage(){
  	//new var called getMail will call func getNew Message
 		var getMail = getNewMessage();
-		 var inbox = document.getElementById("main");
+		var inbox = document.getElementById("main");
+
 console.log(getMail)
+ 
  	//boxing each message
  	var box = document.createElement('div');
  	box.id = 'box';
- 	box.className = "container";
+ 	box.className = "newContainer";
  	inbox.appendChild(box);
  
  	//generate dates to <div> with id "date div"
@@ -102,7 +139,7 @@ console.log(getMail)
  	//generate message body
  	var message = document.createElement('div');
  	message.id = "message";
- 	message.className = "content";
+ 	message.className = "newContent";
  	message.innerHTML += getMail.body;
  	box.appendChild(message);
 
@@ -111,39 +148,35 @@ console.log(getMail)
  	newRow.innerHTML += "<br />";
  	box.appendChild(newRow);
 
-window.geemails.push(getMail)
+
+
+//for toggling new messages
+var newMessageBox = document.getElementsByClassName('newContainer');
+//event listener for on click, boxed messages 
+for (var i=0; i<newMessageBox.length;i++){
+	newMessageBox[i].addEventListener("click",newToggleMessage);
+}
+
+function newToggleMessage(){
+	var whoDis = this.querySelectorAll(".newContent")[0];
+	if(whoDis.style.display === "none"){
+		whoDis.style.display = "block";
+	} else {
+		whoDis.style.display = "none";
+	}
+}
+
 
 
 	
 };
  	var int = setInterval(newMessage, 5000);
-//var int = setInterval("newMessage()" {start(); }, 1000);
-//var intCount = 1;
-//function start() {
-//	if (intCount === 10) {
-//		clearInterval (int);
-//	} else {
-//		intCount++
-//	}
-//}
+ 
+
 				
 
-//for toggling messages
-var messageToggle = document.getElementsByClassName("content");
-var messageBox = document.getElementsByClassName('container');
-//event listener for on click, boxed messages 
-for (var i=0; i<messageBox.length;i++){
-	messageBox[i].addEventListener("click",toggleMessage);
-}
 
-function toggleMessage(){
-	var dis = this.querySelectorAll(".content")[0];
-	if(dis.style.display === "none"){
-		dis.style.display = "block";
-	} else {
-		dis.style.display = "none";
-	}
-}
+
 
 
 
@@ -170,6 +203,7 @@ function toggleMessage(){
 	<body>
 		<h1> Gee-Mail Inbox</h1>
 		<div class ="container" id="main">
+			<div class ="smallcounter" id="numbers"> </div>
 
 	
 
