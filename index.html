@@ -1,7 +1,7 @@
 <html>
 	<head>
 		<script src="js/mail-generator.js"></script>
-		<link href="style.css" rel="stylesheet" media="screen">
+		<link href="css/style.css" rel="stylesheet" media="screen">
 		
 
     <script>
@@ -13,20 +13,21 @@ window.onload = function() {
 //keeping count, in a jenky way 
 
 var starter = 10;
-numbers.innerHTML = starter + ' geemails';
+
+numbers.innerHTML = starter + ' Gee-Mails';
+tab.innerHTML = "(" + starter + ") " + "Gee-Mail Inbox "; 
+//geemails in browers
 function keepCountBox() {
 	starter++
 	console.log(starter)
 	 var mailCount = document.getElementById('numbers');
-mailCount.innerHTML = starter + " geemails";
+mailCount.innerHTML = starter + "<br />" + "Gee-Mails";
 
  	//counter in tab 
 var tabCount = document.getElementsByTagName('title')[0];
- tabCount.innerHTML =  "Gee-Mail Inbox " + "(" + starter + ")";
+ tabCount.innerHTML = "(" + starter + ") " + "Gee-Mail Inbox "; 
  };
 var counterBox = setInterval(keepCountBox, 5000);
-
-
 
 
 
@@ -197,13 +198,14 @@ function newToggleMessage(){
 
 
     </script>
-    <title> </title>
+    <title id=tab> </title>
 	</head>
 	
 	<body>
 		<h1> Gee-Mail Inbox</h1>
-		<div class ="container" id="main">
-			<div class ="smallcounter" id="numbers"> </div>
+		<div class ="smallcounter" id="numbers"> </div>
+		<div id="main">
+			
 
 	
 

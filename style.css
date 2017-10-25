@@ -1,51 +1,53 @@
+* {
+    box-sizing: border-box;
+}
 
 body {
 	background-color: white;
-	font-family: "Helvetica", sans serif ; 
+	font-family: "Georgia", serif ; 
+	background-image: url("https://cms-assets.tutsplus.com/uploads/users/523/posts/23623/image/grid-example.png");
 }
+
+
 h1 { margin: auto;
 		align: center;
 		border: 5px solid black;
 		padding: 3px;
+		width:100%;
 	}
+
 #main {
+	position: relative;
+	left: 75px;
+	top: -75px;
+	width:94%;
+}
+
+.smallCounter {
+	font-size: 20px;
+	border: solid 5px;
+	width:75px;
+	height: 75px;
+	text-align: center;
+
+
+}
+
+
+.content {
+	display:none;
+}
+
+.newContent {
+	display:none;
+}
+
+.container {
 	border: 3px solid black;
-	display: flex;
-
+	padding: 3px;
 }
 
-.inbox {
+.newContainer {
 	border: 3px solid black;
-	float:right;
-	padding: 20px;
+	padding: 3px;
 }
-
-
-.newDate {
-	order: 2;
-	border: 1px solid black;
-	align-self: auto;
-	padding: 20px;
-}
-
-.newSender {
-	order: 3;
-	border: 1px solid black;
-	align-self: auto;
-	padding: 20px;
-}
-
-.message {
-	order: 4;
-border: 1 px solid black;
-align-self: auto;
-padding: 20px;
-
-}
-
-.messagetoggle span {
-	display: none;
-}
-
-
-
