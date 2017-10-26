@@ -1,0 +1,53 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+	background-color: white;
+	font-family: "Georgia", serif ; 
+	background-image: url("https://cms-assets.tutsplus.com/uploads/users/523/posts/23623/image/grid-example.png");
+}
+
+
+h1 { margin: auto;
+		align: center;
+		border: 5px solid black;
+		padding: 3px;
+		width:100%;
+	}
+
+#main {
+	position: relative;
+	left: 75px;
+	top: -75px;
+	width:94%;
+}
+
+.smallCounter {
+	font-size: 20px;
+	border: solid 5px;
+	width:75px;
+	height: 75px;
+	text-align: center;
+
+
+}
+
+
+.content {
+	display:none;
+}
+
+.newContent {
+	display:none;
+}
+
+.container {
+	border: 3px solid black;
+	padding: 3px;
+}
+
+.newContainer {
+	border: 3px solid black;
+	padding: 3px;
+}
